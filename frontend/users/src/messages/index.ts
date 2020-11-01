@@ -27,4 +27,8 @@ export default defineMessages({
     id: `${namespace}.lastLogin`,
     defaultMessage: 'последний вход',
   },
+  lastName: {
+    id: `${namespace}.lastName`,
+    defaultMessage: 'фамилия',
+  },
 })
