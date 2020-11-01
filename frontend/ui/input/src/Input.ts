@@ -1,5 +1,5 @@
 import { createElement, KeyboardEvent } from 'react'
-import Wrapper from './Wrapper'
+import Wrapper from '@ui/input/src/Wrapper'
 import styled from '@emotion/styled'
 import { ifProp } from 'styled-tools'
 
@@ -8,6 +8,7 @@ export interface InputElementProps {
   borderColor?: string
   disabled?: boolean
   error?: boolean
+  errorText?: string
   warning?: boolean
   transparent?: boolean
   select?: boolean
@@ -25,6 +26,13 @@ export interface InputProps extends InputElementProps {
   onClick?: () => void
 }
 
+const DivElement = styled.div`
+  text-align:left;
+  color: ${({ theme }: any) => theme.colors.red};
+  margin: 5px 0;
+  font-family: ${({ theme }: any) => theme.fontFamily.sf};
+`
+
 const InputElement = styled('input', {
   shouldForwardProp: prop =>
     !['borderColor', 'error', 'transparent', 'select'].includes(prop),
@@ -33,53 +41,53 @@ const InputElement = styled('input', {
     width: '100%',
     height: 40,
     boxSizing: 'border-box',
-    borderRadius: `${theme.borderRadius.n}px`,
+    borderRadius: `${theme.borderRadius.n} px`,
     outline: 'none',
     backgroundColor: theme.colors.white,
-    border: `1px solid ${theme.colors[borderColor]}`,
+    border: `1px solid ${theme.colors[borderColor]} `,
     paddingLeft: '20px',
     boxShadow: '0 2px 4px 0 rgba(41, 50, 70, 0.1)',
     transition: '100ms ease all',
     fontFamily: theme.fontFamily.sf,
-    fontSize: `${theme.fontSizes.s}px`,
+    fontSize: `${theme.fontSizes.s} px`,
     fontWeight: theme.fontWeights.normal,
     lineHeight: theme.lineHeights.s,
     color: theme.colors[color],
     [':not([value=""])']: {
       boxShadow: 'none',
-      borderColor: `${theme.colors.blueHaze}`,
+      borderColor: `${theme.colors.blueHaze} `,
     },
     [':hover']: {
       boxShadow: 'none',
-      borderColor: `${theme.colors.blueHaze}`,
-      backgroundColor: `${theme.colors.webWhite}`,
+      borderColor: `${theme.colors.blueHaze} `,
+      backgroundColor: `${theme.colors.webWhite} `,
     },
     [':focus']: {
       boxShadow: '0 2px 6px 0 rgba(41, 50, 70, 0.4)',
-      borderColor: `${theme.colors.lightGray}`,
-      backgroundColor: `${theme.colors.white}`,
+      borderColor: `${theme.colors.lightGray} `,
+      backgroundColor: `${theme.colors.white} `,
     },
   }),
   ifProp('disabled', ({ theme }: any) => ({
-    border: `1px solid ${theme.colors.blueHaze}`,
-    color: `${theme.colors.blueHaze}`,
+    border: `1px solid ${theme.colors.blueHaze} `,
+    color: `${theme.colors.blueHaze} `,
   })),
   ifProp('error', ({ theme }: any) => ({
-    borderColor: `${theme.colors.red}`,
+    borderColor: `${theme.colors.red} `,
     [':hover']: {
-      borderColor: `${theme.colors.red}`,
+      borderColor: `${theme.colors.red} `,
     },
     [':focus']: {
-      borderColor: `${theme.colors.red}`,
+      borderColor: `${theme.colors.red} `,
     },
   })),
   ifProp('warning', ({ theme }: any) => ({
-    borderColor: `${theme.colors.orange}`,
+    borderColor: `${theme.colors.orange} `,
     [':hover']: {
-      borderColor: `${theme.colors.orange}`,
+      borderColor: `${theme.colors.orange} `,
     },
     [':focus']: {
-      borderColor: `${theme.colors.orange}`,
+      borderColor: `${theme.colors.orange} `,
     },
   })),
   ifProp('transparent', {
@@ -96,11 +104,14 @@ const InputElement = styled('input', {
   })
 )
 
+
 const Input = ({
   id,
   type,
+  error,
   disabled,
   value,
+  errorText,
   placeholder,
   readOnly,
   onChange,
@@ -114,6 +125,7 @@ const Input = ({
     createElement(InputElement, {
       id,
       type,
+      error,
       disabled,
       value,
       placeholder,
@@ -129,13 +141,13 @@ const Input = ({
         }
       },
       ...props,
-    })
+    }), errorText && createElement(DivElement, null, `${errorText}`)
   )
 
 Input.defaultProps = {
   color: 'blueBayoux',
   borderColor: 'lightGray',
-  onChange: () => {},
+  onChange: () => { },
 }
 
 export default Input

@@ -42,7 +42,8 @@ export const login = () => async (dispatch, getState, client) => {
     })
 
     dispatch({
-      type: actions.clear,
+      type: actions.setErrors,
+      errors: { message: e.message },
     })
   }
 }
