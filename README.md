@@ -8,5 +8,5 @@
 
 - workspaces (frontend), в lerna.json + "useWorkspaces": true, tsconfig.json + "jsx": "react"
 - в пакет frontend/dashboard добавил в зависимости другие пакеты и заменил импорты 
-- в пакте frontend/auth в package.json добавил поле main (точка входа для импортов)
-- в пакте frontend/dashboard в package.json изменил хост и порт для сервера
+- в пакет frontend/auth в package.json добавил поле main (точка входа для импортов)
+- в пакет frontend/dashboard в package.json изменил хост и порт для сервера
