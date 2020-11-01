@@ -27,6 +27,10 @@ export default defineMessages({
     id: `${namespace}.repeat_password`,
     defaultMessage: 'Введите пароль повторно',
   },
+  repeatPasswordError: {
+    id: `${namespace}.repeat_password`,
+    defaultMessage: 'Пароли не совпадает',
+  },
   register: {
     id: `${namespace}.register`,
     defaultMessage: 'Зарегистрироваться',
@@ -34,5 +38,9 @@ export default defineMessages({
   login: {
     id: `${namespace}.login.login`,
     defaultMessage: 'Войти',
+  },
+  back: {
+    id: `${namespace}.back`,
+    defaultMessage: 'Назад',
   },
 })

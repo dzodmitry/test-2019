@@ -1,3 +1,3 @@
-import Input from './Input'
+import Input from '@ui/input/src/Input'
 
 export { Input }

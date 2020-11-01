@@ -3,7 +3,8 @@ import * as actions from '../constants'
 
 const initialState = {
   email: '',
-  password: '',
+  firstName: '',
+  lastName: '',
   errors: {},
 }
 

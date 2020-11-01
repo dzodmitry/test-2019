@@ -18,7 +18,7 @@
     "graphql-tools": "4.0.4",
     "graphql-iso-date": "3.6.1",
     "reflect-metadata": "0.1.13",
-    "typeorm": "0.2.18",
+    "typeorm": "0.2.21",
     "pg": "7.11.0"
   },
   "devDependencies": {
